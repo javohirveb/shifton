@@ -1,0 +1,177 @@
+@use "../abstract/variables" as vars;
+@use "../abstract/mixins";
+@use "../base/base";
+
+.navbar {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   background: vars.$dark;
+   z-index: 100;
+
+   &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   &__list {
+      position: fixed;
+      left: 100%;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: #111111df;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      transition: all 0.5s ease;
+   }
+
+   &__link {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: vars.$white;
+      text-decoration: none;
+      position: relative;
+
+      &::after {
+         content: '';
+         position: absolute;
+         left: 50%;
+         bottom: -3px;
+         width: 0px;
+         height: 3px;
+         background: vars.$blue;
+         box-shadow: 0 0 5px vars.$blue;
+         transition: all .6s ease;
+      }
+
+      &:hover::after {
+         left: 0;
+         width: 100%;
+      }
+   }
+}
+
+// bars
+
+.menu-btn {
+   position: absolute;
+   left: 85%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 40px;
+   height: 40px;
+   cursor: pointer;
+   transition: all 0.6s ease;
+
+   &__burger {
+      width: 30px;
+      height: 4px;
+      background: vars.$white;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+      transition: all .5s ease-in-out;
+
+      &::before,
+      &::after {
+         content: '';
+         position: absolute;
+         width: 30px;
+         height: 4px;
+         background: vars.$white;
+         border-radius: 5px;
+         box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+         transition: all .5s ease-in-out;
+      }
+
+      &::before {
+         transform: translateY(-10px);
+      }
+
+      &::after {
+         transform: translateY(10px);
+      }
+   }
+
+   &.open &__burger {
+      transform: translateX(-30px);
+      background: transparent;
+      box-shadow: none;
+   }
+
+   &.open .menu-btn__burger::before {
+      transform: rotate(45deg) translate(20px, -20px);
+   }
+
+   &.open .menu-btn__burger::after {
+      transform: rotate(-45deg) translate(20px, 20px);
+   }
+}
+
+@include mixins.media-lg {
+   .navbar {
+      &__list {
+         position: static;
+         width: auto;
+         background: transparent;
+         flex-direction: row;
+         justify-content: start;
+         align-items: start;
+      }
+   }
+
+   .menu-btn {
+      display: none;
+   }
+}
+
+.home {
+   margin-top: 73px;
+   height: calc(100vh - 73px);
+   background: url(../../images/header-bg.png);
+   background-position: center;
+   background-attachment: fixed;
+   background-size: cover;
+   color: vars.$white;
+   display: flex;
+   align-items: center;
+
+   &__title {
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 40px;
+   }
+
+   &__subtitle {
+      font-weight: 500;
+      font-size: 19px;
+      line-height: 20px;
+   }
+
+   &__link {
+      display: inline-block;
+      margin-top: 32px;
+   }
+}
+
+@include mixins.media-lg {
+   .home {
+      &__title {
+         font-size: 48px;
+         line-height: 56px;
+      }
+
+      &__subtitle {
+         font-size: 26px;
+         line-height: 30px;
+      }
+   }
+}

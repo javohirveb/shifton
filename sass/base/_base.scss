@@ -1,0 +1,108 @@
+@use '../abstract/variables' as vars;
+@use '../abstract/mixins';
+
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700&display=swap);
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Open Sans', sans-serif;
+}
+
+html {
+   scroll-behavior: smooth;
+}
+
+ul {
+   list-style: none;
+}
+
+.green-btn {
+   font-size: 16px;
+   font-weight: 500;
+   background: vars.$green;
+   color: vars.$white;
+   text-decoration: none;
+   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.1);
+   border-radius: 26px;
+   padding: 12px 30px;
+   transition: all .3s ease-out;
+   &:hover {
+      background: vars.$green-hover;
+   }
+   &:active {
+      background: vars.$green-active;
+   }
+}
+
+.blue-btn {
+   font-size: 16px;
+   font-weight: 500;
+   background: vars.$blue;
+   color: vars.$white;
+   text-decoration: none;
+   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.1);
+   border-radius: 26px;
+   padding: 12px 30px;
+   transition: all .3s ease-out;
+   &::after {
+      display: none;
+   }
+   &:hover {
+      background: vars.$blue-hover;
+   }
+   &:active {
+      background: vars.$blue-active;
+   }
+}
+
+.pink-btn {
+   font-size: 16px;
+   font-weight: 500;
+   background: vars.$pink;
+   color: vars.$white;
+   text-decoration: none;
+   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.1);
+   border-radius: 26px;
+   padding: 12px 30px;
+   transition: all .3s ease-out;
+   &:hover {
+      background: vars.$pink-hover;
+   }
+   &:active {
+      background: vars.$pink-active;
+   }
+}
+
+.red-btn {
+   font-size: 16px;
+   font-weight: 500;
+   background: vars.$red;
+   color: vars.$white;
+   text-decoration: none;
+   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.1);
+   border-radius: 26px;
+   padding: 12px 30px;
+   transition: all .3s ease-out;
+   &:hover {
+      background: vars.$red-hover;
+   }
+   &:active {
+      background: vars.$red-active;
+   }
+}
+
+.left-90 {
+   left: 10% !important;
+}
+
+.left-0 {
+   left: 0 !important;
+}
+
+@include mixins.media-lg {
+   .red-btn, .blue-btn, .pink-btn, .green-btn {
+      font-size: 20px;
+   }
+}

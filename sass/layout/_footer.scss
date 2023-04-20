@@ -1,0 +1,53 @@
+@use "../abstract/variables" as vars;
+@use '../abstract/mixins';
+
+.footer {
+   margin-top: 50px;
+   background: vars.$blue;
+   padding: 55px 0;
+
+   hr {
+      height: 2px;
+      width: 100%;
+      background: vars.$white;
+      margin: 20px 0;
+   }
+
+   &__links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+
+      a {
+         font-weight: 500;
+         font-size: 20px;
+         line-height: 23px;
+         color: vars.$white;
+         text-decoration: none;
+         text-transform: capitalize;
+         position: relative;
+
+         &:not(:first-child)::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            transform: translateX(-50%);
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: vars.$white;
+         }
+      }
+   }
+
+   .copyright {
+      text-align: center;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 23px;
+      color: vars.$white;
+      margin: 15px 0;
+   }
+}
